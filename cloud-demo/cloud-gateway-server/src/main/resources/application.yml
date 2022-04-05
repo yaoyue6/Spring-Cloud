@@ -1,0 +1,34 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: cloud-gateway-server
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名称进行路由
+      routes:
+        - id: payment_route1 # 路由的id，没有规定规则，但要求唯一，建议配合服务名使用
+          # uri: http://localhost:8001 # 匹配后提供服务的路由地址
+          uri: lb://cloud-payment-service
+          predicates:
+            - Path=/payment/select/** # 断言，路径相匹配的进行路由
+          #  - After=2022-04-04T18:02:24.969+08:00[Asia/Shanghai] # 指定时间之后才可访问
+          #  - Before=2022-04-04T17:02:24.969+08:00[Asia/Shanghai] # 指定时间之前才可访问
+          #  - Between=2022-04-04T17:02:24.969+08:00[Asia/Shanghai],2022-04-04T18:02:24.969+08:00[Asia/Shanghai] # 指定时间之间才可访问
+          #  - Cookie=username,zs # 带cookie，username的值为cookie # 请求必须携带key为username，value为zs的cookie值 curl http://localhost:8050/payment/select/1 --cookie "username=zs"
+          #  - Header=X-Request-Id,\d+ # 请求头必须携带值为正整数的X-Request-Id值  curl http://localhost:8050/payment/select/1 -H "X-Request-Id:31"
+          #  - Host=**.baidu.com    #Host: xxx.angenin.com 请求是Host必须有**.baidu.com  curl http://localhost:8050/payment/select/1 -H "Host:www.baidu,com"
+          #  - Method=GET  #只允许get请求访问
+          #  - Query=username, \d+   #url请求地址必须带上username参数，并且值必须为整数
+          #  - Query=username, \d+   #url请求地址必须带上username参数，并且值必须为整数
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server-cluster1:7001/eureka,http://eureka-server-cluster2:7002/eureka

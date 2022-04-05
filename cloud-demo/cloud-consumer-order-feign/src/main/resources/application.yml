@@ -1,0 +1,13 @@
+server:
+  port: 8030
+
+spring:
+  application:
+    name: cloud-order-feign
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka-server-cluster1:7001/eureka, http://eureka-server-cluster2:7002/eureka

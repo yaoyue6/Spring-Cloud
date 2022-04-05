@@ -1,0 +1,9 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: cloud-order-zookeeper
+  cloud:
+    zookeeper:
+      connect-string: 106.14.19.0:2181

@@ -1,0 +1,18 @@
+server:
+  port: 8041
+
+spring:
+  application:
+    name: cloud-hystrix-feign
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka-server-cluster1:7001/eureka,http://eureka-server-cluster2:7002
+
+# springCloud 版本是2020.0.1或以上是采用下述标签，以下是采用feign.hystrix.enabled
+feign:
+  circuitbreaker:
+    enabled: true

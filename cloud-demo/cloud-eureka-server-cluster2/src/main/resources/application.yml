@@ -1,0 +1,20 @@
+server:
+  port: 7002
+
+spring:
+  application:
+    # 需要修改host文件
+    name: eureka-server-cluster2
+
+eureka:
+#  server:
+    # 关闭自动保护机制
+#   enable-self-preservation: false
+    # 心跳的间隔时间，默认为ms
+#   eviction-interval-timer-in-ms: 2000
+
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-server-cluster1:7001/eureka

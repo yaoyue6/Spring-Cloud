@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yaoyue</groupId>
+  <artifactId>cloud-demo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <modules>
+    <module>cloud-provider-payment</module>
+    <module>cloud-consumer-order</module>
+    <module>cloud-common-api</module>
+    <module>cloud-eureka-server</module>
+    <module>cloud-eureka-server-cluster1</module>
+    <module>cloud-eureka-server-cluster2</module>
+    <module>cloud-provider-payment-cluster1</module>
+    <module>cloud-provider-payment-cluster2</module>
+    <module>cloud-provider-payment-zookeeper</module>
+      <module>cloud-consumer-order-zookeeper</module>
+      <module>cloud-provider-payment-consul</module>
+      <module>cloud-consumer-order-consul</module>
+      <module>cloud-consumer-order-feign</module>
+      <module>cloud-hystrix-server</module>
+      <module>cloud-consumer-hystrix-feign</module>
+      <module>cloud-hystrix-dashboard</module>
+      <module>cloud-gateway-server</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <junit.version>4.13.2</junit.version>
+    <log4j.version>1.2.17</log4j.version>
+    <lombok.version>1.18.22</lombok.version>
+    <mysql.version>8.0.28</mysql.version>
+    <druid.version>1.2.8</druid.version>
+    <fastjson.version>1.2.79</fastjson.version>
+    <mybatis.spring.boot.version>2.2.2</mybatis.spring.boot.version>
+  </properties>
+
+  <!--用在父工程，子模块继承之后，提供：锁定版本+子module不用写groupId和version-->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.6.4</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2021.0.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.spring.boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        <version>3.1.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        <version>3.1.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

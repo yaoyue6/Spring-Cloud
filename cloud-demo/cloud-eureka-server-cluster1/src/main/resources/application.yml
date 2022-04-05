@@ -1,0 +1,19 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: eureka-server-cluster1
+
+eureka:
+#  server:
+    # 关闭自动保护机制
+#    enable-self-preservation: false
+    # 心跳的间隔时间，默认为ms
+#    eviction-interval-timer-in-ms: 2000
+
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka-server-cluster2:7002/eureka

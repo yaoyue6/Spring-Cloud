@@ -1,0 +1,13 @@
+server:
+  port: 8021
+
+spring:
+  cloud:
+    consul:
+      port: 8500
+      host: 106.14.19.0
+      discovery:
+        health-check-interval: 20s
+        hostname: ${spring.application.name}
+  application:
+    name: cloud-order-consul

@@ -1,0 +1,15 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: cloud-payment-consul
+
+  cloud:
+    consul:
+      host: 106.14.19.0
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        health-check-interval: 20s
+        health-check-path: /curator/health

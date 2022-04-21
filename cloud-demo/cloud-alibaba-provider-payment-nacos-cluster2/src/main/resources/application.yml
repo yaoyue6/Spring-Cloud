@@ -1,0 +1,11 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: cloud-alibaba-nacos-payment-cluster
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.14.19.0:8848 #配置nacos地址

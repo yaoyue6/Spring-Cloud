@@ -1,0 +1,14 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: cloud-alibaba-nacos-order
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.14.19.0:8848
+
+service:
+  url: http://cloud-alibaba-nacos-payment-cluster

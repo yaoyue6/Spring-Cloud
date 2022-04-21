@@ -1,0 +1,19 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:yaoyue6/Spring-Cloud-Config.git # git的仓库地址
+          search-paths:
+            - Spring-Cloud-Config # 搜索目录
+      label: main # 读取分支
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server-cluster1:7001/eureka
